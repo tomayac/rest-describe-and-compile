@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cache-entry>
+	<generated-type-hash class="com.google.code.apis.rest.client.GUI.Strings_" hash="7E21541930F865335A9E692FE5ED8684"/>
+	<generated-type-hash class="com.google.code.apis.rest.client.CodeGeneration.Templates_DogFoodPHP_" hash="3636E67E9E628EE743204915CF107380"/>
+	<generated-type-hash class="com.google.code.apis.rest.client.CodeGeneration.Templates_PHP_" hash="E748FC4EB8F75BAD62411365F6C3856D"/>
+	<generated-type-hash class="com.google.code.apis.rest.client.GUI.Notifications_" hash="CFB9ED24B5F026B0B89C2AA09F0BD501"/>
+	<generated-type-hash class="com.google.gwt.user.client.ui.TreeImages_generatedBundle" hash="778ED29E275F973EDF76ACD57F297BB1"/>
+	<generated-type-hash class="com.google.code.apis.rest.client.CodeGeneration.Templates_Ruby_" hash="D9E37E5F5E1D344890A756E3768AD69E"/>
+	<generated-type-hash class="com.google.code.apis.rest.client.CodeGeneration.Templates_Python_" hash="9AF7D9E3043D1151FEE305694BF3DBF3"/>
+	<generated-type-hash class="com.google.code.apis.rest.client.CodeGeneration.Templates_Java_" hash="A8B254CABF499B728978D6AA574A03F7"/>
+	<rebind-decision in="com.google.gwt.user.client.ui.impl.TextBoxImpl" out="com.google.gwt.user.client.ui.impl.TextBoxImpl"/>
+	<rebind-decision in="com.google.code.apis.rest.client.CodeGeneration.Templates_Ruby" out="com.google.code.apis.rest.client.CodeGeneration.Templates_Ruby_"/>
+	<rebind-decision in="com.google.gwt.user.client.ui.impl.FocusImpl" out="com.google.gwt.user.client.ui.impl.FocusImplOld"/>
+	<rebind-decision in="com.google.gwt.xml.client.impl.XMLParserImpl" out="com.google.gwt.xml.client.impl.XMLParserImplOpera"/>
+	<rebind-decision in="com.google.gwt.user.client.ui.impl.ClippedImageImpl" out="com.google.gwt.user.client.ui.impl.ClippedImageImpl"/>
+	<rebind-decision in="com.google.code.apis.rest.client.CodeGeneration.Templates_Python" out="com.google.code.apis.rest.client.CodeGeneration.Templates_Python_"/>
+	<rebind-decision in="com.google.gwt.user.client.impl.HistoryImpl" out="com.google.gwt.user.client.impl.HistoryImplStandard"/>
+	<rebind-decision in="com.google.code.apis.rest.client.GUI.Strings" out="com.google.code.apis.rest.client.GUI.Strings_"/>
+	<rebind-decision in="com.google.code.apis.rest.client.CodeGeneration.Templates_Java" out="com.google.code.apis.rest.client.CodeGeneration.Templates_Java_"/>
+	<rebind-decision in="com.google.gwt.user.client.impl.DOMImpl" out="com.google.gwt.user.client.impl.DOMImplOpera"/>
+	<rebind-decision in="com.google.code.apis.rest.client.CodeGeneration.Templates_PHP" out="com.google.code.apis.rest.client.CodeGeneration.Templates_PHP_"/>
+	<rebind-decision in="com.google.code.apis.rest.client.GUI.Notifications" out="com.google.code.apis.rest.client.GUI.Notifications_"/>
+	<rebind-decision in="com.google.gwt.user.client.ui.impl.PopupImpl" out="com.google.gwt.user.client.ui.impl.PopupImpl"/>
+	<rebind-decision in="com.google.gwt.user.client.ui.TreeImages" out="com.google.gwt.user.client.ui.TreeImages_generatedBundle"/>
+	<rebind-decision in="com.google.gwt.user.client.ui.impl.FormPanelImpl" out="com.google.gwt.user.client.ui.impl.FormPanelImpl"/>
+	<rebind-decision in="com.google.gwt.user.client.impl.HTTPRequestImpl" out="com.google.gwt.user.client.impl.HTTPRequestImpl"/>
+	<rebind-decision in="com.google.code.apis.rest.client.RestDescribe" out="com.google.code.apis.rest.client.RestDescribe"/>
+	<rebind-decision in="com.google.code.apis.rest.client.CodeGeneration.Templates_DogFoodPHP" out="com.google.code.apis.rest.client.CodeGeneration.Templates_DogFoodPHP_"/>
+</cache-entry>

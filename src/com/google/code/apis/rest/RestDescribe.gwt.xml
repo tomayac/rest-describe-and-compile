@@ -1,0 +1,20 @@
+<module>
+
+	<!-- Inherit the core Web Toolkit stuff.                  -->
+	<inherits name="com.google.gwt.user.User"/>
+
+	<inherits name="com.google.gwt.xml.XML"/>
+
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	
+	<inherits name="com.google.gwt.http.HTTP"/>
+
+	<!-- Specify the app entry point class.                   -->
+	<entry-point class='com.google.code.apis.rest.client.RestDescribe'/>
+
+	<extend-property name="locale" values="de" />
+	<extend-property name="locale" values="en"/>
+	<extend-property name="locale" values="ca"/>
+
+	<stylesheet src='RestDescribe.css'/>
+</module>

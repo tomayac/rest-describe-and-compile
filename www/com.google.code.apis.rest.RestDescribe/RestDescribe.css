@@ -1,0 +1,331 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  margin: 5px 5px 5px 5px;
+}
+
+small {
+	font-size: 0.8em;
+}
+
+.small {
+	font-size: 0.8em;
+}
+
+h1 {
+  color: darkgreen;
+  font-size: 1.2em;
+}
+	
+h2 {
+  color: darkgreen;
+  font-size: 1.0em;
+}
+
+h3 {
+  color: gray;
+  font-size: 1.0em;
+}
+
+p {
+	text-align: justify;
+	font-size: 1.0em;
+}
+
+div.img_caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.8em;
+  color: rgb(100,100,100);  
+  margin: 0.1em 0.5em 0.1em 0.5em;  
+}
+
+textarea {
+	font-family: courier, monospace;
+	  font-size: 10pt;
+}
+
+.tag {
+	font-size: 10pt;
+  font-weight: bold;
+  color: darkblue;
+  font-family: monospace;
+}
+
+.comment {
+  font-size: 10pt;
+  font-weight: normal;
+  color: maroon;
+  font-family: monospace;
+}
+
+.attribute {
+  font-size: 10pt;
+  font-weight: normal;
+/*  color: rgb(50,50,50);*/
+  color: red;
+  font-family: monospace;
+}
+
+.string {
+	font-size: 10pt;
+  color: darkgreen;
+  font-family: monospace;
+}
+
+code {
+  white-space: pre;
+  font-size: 0.8em;
+  font-family: monospace;
+}
+
+img {
+	border: none;
+}
+
+.gwt-BorderedPanel {
+}
+
+.gwt-Button {
+}
+
+.gwt-Canvas {
+}
+
+.gwt-CheckBox {
+  font-size: smaller;
+}
+
+.gwt-DialogBox {
+  border:2px outset;
+  background-color: white;
+  padding: 5px;
+}
+
+.gwt-DialogBox .Caption {
+  background-color: #C3D9FF;
+  padding: 3px;
+  margin: -2px;
+  font-weight: bold;
+  cursor: move;
+}
+
+.gwt-FileUpload {
+}
+
+.gwt-Frame {
+}
+
+.gwt-HorizontalSplitter .Bar {
+  width: 8px;
+  background-color: #C3D9FF;
+}
+
+.gwt-VerticalSplitter .Bar {
+  height: 8px;
+  background-color: #C3D9FF;
+}
+
+.gwt-Hyperlink {
+}
+
+.gwt-Image {
+}
+
+.gwt-Label {
+  font-size: smaller;
+}
+
+.gwt-ListBox {
+}
+
+.gwt-MenuBar {
+  background-color: rgb(231, 239, 255);
+  border: 1px solid #C3D9FF;
+  cursor: default;
+  font-size: 8pt;
+  padding: 1px 4px 1px 4px;
+}
+
+.gwt-MenuBar .gwt-MenuItem {
+  padding: 1px 4px 1px 4px;
+  font-size: 8pt;
+  cursor: default;  
+}
+
+.gwt-MenuBar .gwt-MenuItem-selected {
+  background-color: white;
+}
+
+.gwt-PasswordTextBox {
+}
+
+.gwt-RadioButton {
+  font-size: 1.0em;
+}
+
+.gwt-TabPanel {
+}
+
+.gwt-TabPanelBottom {
+}
+
+.gwt-TabBar {
+}
+
+.gwt-TabBar .gwt-TabBarFirst {
+}
+
+.gwt-TabBar .gwt-TabBarRest {
+}
+
+.gwt-TabBar .gwt-TabBarItem {
+}
+
+.gwt-TabBar .gwt-TabBarItem-selected {
+}
+
+.gwt-TextArea {
+}
+
+.gwt-TextBox {
+}
+
+.gwt-Tree {
+}
+
+.gwt-Tree .gwt-TreeItem {
+  font-size: 1.0em;
+}
+
+.gwt-Tree .gwt-TreeItem-selected {
+  background-color: #C3D9FF;  
+}
+
+.gwt-StackPanel {
+}
+
+.gwt-StackPanel .gwt-StackPanelItem {
+  background-color: #C3D9FF;
+  cursor: pointer;
+}
+
+.gwt-StackPanel .gwt-StackPanelItem-selected {
+}
+
+.gwt-TabPanel {
+	background-color: rgb(255,207,99);
+}
+
+.gwt-TabPanelBottom {
+	background-color: rgb(255,247,214);
+	border-left: 2px solid rgb(255,207,99);
+	border-right: 2px solid rgb(255,207,99);
+	border-bottom: 2px solid rgb(255,207,99);
+	padding: 4px;
+	padding-top: 8px;
+}
+
+.gwt-TabBar {
+  background-color: rgb(255,207,99);
+  font-size: smaller;
+}
+
+.gwt-TabBar .gwt-TabBarItem-selected {
+  font-weight: bold;
+  text-decoration: none;
+  background-color: rgb(255,247,214);
+  border-top: 1px solid rgb(255,207,99);
+  border-left: 1px solid rgb(255,207,99);
+  border-right: 1px solid rgb(255,207,99);
+  padding: 4px;
+  cursor: default;
+}
+
+.gwt-TabBar .gwt-TabBarItem {
+  font-weight: bold;
+	padding: 4px;
+}
+
+
+/* custom widgets */
+.restDescribe-mainApplicationPanel {
+  background-color: #C3D9FF;
+  color: black;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.restDescribe-menuPanel {
+  background-color: white;
+  color: black;
+}
+
+.restDescribe-userLinks {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.restDescribe-requestSamplePanel {
+  color: black;
+  margin-left:0.5em;
+  margin-right:0.5em;
+  margin-top:0.5em;
+  margin-bottom:0.5em;  
+}
+
+.restDescribe-requestSampleArea {
+	background-color: #b5edbc;
+	border: 1px solid #c5fdcc;
+	padding-bottom: 0.5em;
+}
+
+.restDescribe-navigationPanel {
+  color: black;
+  margin-left: 0.5em;
+  margin-right: 0.5em; 
+}
+
+.restDescribe-requestArea {
+  background-color: #b5edbc;
+  color: black;  
+  border: 1px solid #c5fdcc;
+}
+
+.restDescribe-wadlPanel {
+  color: black;
+  margin-left: 0.5em;  
+  margin-right: 0.5em;  
+}
+
+.restDescribe-wadlArea {
+  background-color: white;
+  border: 1px solid #C0C0FF; 
+}
+
+.restDescribe-restCompilePanel {
+  color: black;
+  margin-left:0.5em;
+  margin-right:0.5em;
+  margin-top:0.5em;
+  margin-bottom:0.5em;  
+}
+
+.restDescribe-restCompileArea {
+	background-color: #b5edbc;
+	border: 1px solid #c5fdcc;
+	padding: 0.5em;
+}
+
+.restDescribe-classNamesPanel {
+  background-color: white;
+  border: 1px solid #C0C0FF; 
+}
+
+.restDescribe-error {	
+	border: 2px solid red;
+	background-color: #FF8080;
+}

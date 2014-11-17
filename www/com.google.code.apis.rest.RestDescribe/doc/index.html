@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">        
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+	  </script>
+	  <script type="text/javascript">
+		  _uacct = "UA-2040927-1";
+	 	  urchinTracker();
+  	</script>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../RestDescribe.css" />
+    <title>REST Describe &amp; Compile Documentation</title>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+	  </script>
+	  <script type="text/javascript">
+		  _uacct = "UA-2040927-1";
+		  urchinTracker();
+	  </script>
+    <script type="text/javascript">
+      function highlight(id) {
+        document.getElementById(id + "1").style.backgroundColor="yellow";
+        document.getElementById(id + "2").style.backgroundColor="yellow";        
+      }
+      function unhighlight(id) {
+        document.getElementById(id + "1").style.backgroundColor="transparent";
+        document.getElementById(id + "2").style.backgroundColor="transparent";        
+      }
+    </script>    
+  </head>
+  <body>  
+    <h1>REST Describe &amp; Compile Documentation</h1> 
+    <div style="float:right;margin-bottom:1.0em;margin-left:5.0em;padding:0.5em;background-color:#FFFFAA;width:28em;font-size:0.8em;border:#FFAA80 dashed 1px;">
+      <b>Contents:</b><br />
+      <a href="#intro">Introduction</a><br />
+      <a href="#wtf">The WTF of WADL and REST Describe &amp; Compile</a><br />
+      <a href="#why">Why should I use it?</a><br />
+      <a href="#how">How does REST Describe &amp; Compile work?</a><br />
+      <a href="#map">How does a REST request map to a WADL representation?</a><br />
+      <a href="#tutorial">A quick tutorial on how to use REST Describe &amp; Compile</a><br />
+    </div>           
+    <p>
+      <small>&copy; 2007 by Thomas Steiner (<a href="mailto:tomac(AT)google[DOT]com">tomac(AT)google[DOT]com</a>) and the REST Describe &amp; Compile community. For more details please consult  <a href="http://code.google.com/p/rest-api-code-gen/">http://code.google.com/p/rest-api-code-gen</a>.</small>
+    </p>
+    <p>
+      <img alt="REST Describe logo" src="./resources/rest_describe_logo.png" style="padding:1.0em 1.0em 1.0em 0.0em;vertical-align:middle;" /><img alt="REST Compile logo" src="./resources/rest_compile_logo.png" style="padding:1.0em 0.0em 1.0em 0.0em;vertical-align:middle;" />
+    </p>
+    <h2 style="margin-top:1.0em;margin-bottom:1.5em;"><a name="intro">Introduction</a></h2>            
+    <div style="float:right;">
+    <a href="./resources/shot1.png">
+      <img src="./resources/shot1.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.0em 0.5em;" />
+    </a>
+    <div class="img_caption">(Main screen)</div>
+    </div> 
+    <p>
+      REST Describe &amp; Compile is an <b>editor</b> and a <b>compiler</b> for (REST) Web Services that are described in Sun engineer <i>Marc  Hadley</i>'s <b>W</b>eb <b>A</b>pplication  <b>D</b>escription <b>L</b>anguage, or short <b>WADL</b>. In order to use REST Describe &amp; Compile you do not necessarily need to understand <a href="https://wadl.dev.java.net/">what WADL is</a>, it is a good idea to have heard at least of the basics though. In consequence, in the following let me explain the absolute minimum of what I consider good to know.
+    </p>
+    <h2 style="margin-top:3.0em;margin-bottom:1.5em;"><a name="wtf">The WTF of WADL and REST Describe &amp; Compile</a></h2>
+    <p>
+      In the <b>SOAP world</b> there is <a href="http://www.w3.org/TR/wsdl">WSDL</a>, and especially there is  <a href="http://ws.apache.org/axis/java/user-guide.html#WSDL2JavaBuildingStubsSkeletonsAndDataTypesFromWSDL">WSDL2Java</a>, a tool maintained by the Apache Axis folks which will build Java proxies and skeletons for services with WSDL descriptions, so in theory you can get the client-side proxy for free.<br />
+    </p>
+    <p>
+      In contrast, in the <b>REST world</b> there was no WSDL until <a href="http://www.w3.org/TR/wsdl20/">WSDL 2.0</a>. In practice adoption of WSDL 2.0 is still in its (not so promising) infancy. Generally WSDL is considered hard to learn, understand, and implement. For these reasons Marc Hadley has published his WADL specification, intended to <i>"provide a <b>simple alternative to WSDL</b> for use with XML/HTTP Web applications."</i> (citing Marc Hadley's initial <a href="http://weblogs.java.net/blog/mhadley/archive/2005/05/introducing_wad.html">WADL announcement</a> on his blog).
+    </p>
+    <p>
+      On the <a href="https://wadl.dev.java.net/wadl2java.html">WADL developer site</a> Marc Hadley maintains a command line tool named <span style="font-family:monospace;">WADL2Java</span>. The ambitious goal of REST Describe &amp; Compile is to provide sort of <span style="font-family:monospace;text-decoration:underline;">WADL2Anything</span>. So what REST Describe &amp; Compile does is that it:
+    </p>
+      <ul>
+        <li><b>Generates new WADL</b> files in a completely interactive way.</li>
+        <li>Lets you <b>upload and edit existing WADL files</b>.</li>
+        <li>Allows you to <b>compile WADL files to source code</b> in various programming languages.</li>
+      </ul>
+    <h2 style="margin-top:3.0em;margin-bottom:1.5em;"><a name="why">Why should I use it?</a></h2>
+    <p>
+      There are two types of users for REST Describe &amp; Compile:
+     </p>
+      <ol>
+        <li style="text-align:justify;">The first type of user, the <b>REST API consumer</b>, is interested in the <b>code generation capabilites</b> of the application. In order to use an API, he can easily retrieve the client source code in the programming language of his choice by means of REST Describe &amp; Compile. Ideally there already exists a WADL for the API the user is interested in, however, if not, with REST Describe &amp; Compile at least a basic WADL description can be relatively easily created.</li>
+        <li style="text-align:justify;">The second type of user is the <b>provider of a REST API</b>. This type of user is interested in the <b>WADL creation capabilities</b> of the application in order to provide the API consumers with a WADL file for the API, and also gain a better architectural overview on their service by seeing the whole API structure in just one WADL file. In addition to that, he can quickly obtain working test cases with the code generation feature.</li>
+      </ol>
+      <div style="float:left;">
+      <a href="./resources/shot3.png">
+        <img src="./resources/shot3.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.0em 0.5em;" />
+      </a>
+      <div class="img_caption">(Custom types dialog)</div>
+      </div>
+    <p>
+      If there is a software program that addresses your needs, i.e. you must use it because it does a certain task pretty well, you have an <b>interest</b> in using the software. However, things get much smoother when the interest comes along with <b>fun</b>. Then interest gets paired with motivation. REST Describe &amp; Compile is not a command line tool like WSDL2Java, or WADL2Java. I am not saying that one cannot have fun with these command line tools, it is just that me personally, I hate the command line. It simply is not my way of thinking. I love GUIs, and so I have created REST Describe &amp; Compile from the first working beta release on with an <b>"ajaxy" GUI</b>, using <a href="http://code.google.com/webtoolkit/">Google Web Toolkit</a>. This allows the software to react in a completely interactive way, you can change a WADL detail, and see the effect on the generated code right away.
+    </p>
+    <h2 style="margin-top:3.0em;margin-bottom:1.5em;"><a name="how">How does REST Describe &amp; Compile work?</a></h2>
+    <p>
+      REST APIs are documented in a <b>human-readable, textual way</b>, a set of HTML files being the most common choice of API providers. To a machine, this documentation is worthless. However, in most cases this documentation is enriched with <b>sample requests</b> that give the reader an impression of how to form valid requests. The quality and the expressiveness of these sample requests are a key factor in the WADL creation process. The application is based on the idea that creating a description for a Web Service should be a rather simple task given the information already contained in requests. Let us take a very simple imaginary online bookmarking Web Service to make the idea clear:
+    </p>
+    <p>
+      <code><span style="color:darkblue;">GET http://bookmarks-online.com</span><span style="color:blue;">/api/v1/</span><span style="color:rgb(192,0,255);">bookmarks</span><span style="color:red;">?userId</span>=<span style="color:darkgreen;">tom</span>&amp;<span style="color:red;">tags</span>=<span style="color:darkgreen;">rest</span>&amp;<span style="color:red;">limit</span>=<span style="color:darkgreen;">10</span></code><br />
+    </p>
+    <p>
+      Simply by looking at the URI we can extract the following information:
+    </p>
+      <ul>
+        <li><code><span style="color:darkblue;">GET</span></code>: the HTTP method of this operation is GET.</li>
+        <li><code><span style="color:darkblue;">http://bookmarks-online.com</span></code>: there is a Web Service at this base address.</li>
+        <li><code><span style="color:blue;">/api/v1/</span></code>: this is the path to access the service components.</li>
+        <li><code><span style="color:rgb(192,0,255);">bookmarks</span></code>: there is an operation that manages your bookmarks.</li>
+        <li><code><span style="color:red;">?userId</span>=<span style="color:darkgreen;">tom</span>&amp;<span style="color:red;">tags</span>=<span style="color:darkgreen;">rest</span>&amp;<span style="color:red;">limit</span>=<span style="color:darkgreen;">10</span></code>: it takes three arguments, "userId", "tags", and "limit". Having a closer look at the parameters, we could guess that "userId" and "tags" are both strings, and that "limit" expects an integer value.
+        </li>
+      </ul>
+    <p>
+      All this information just from one sample request. This is basically what the REST Describe approach is about.
+    </p>
+    <div style="border:dashed gray 1px;padding:0.5em;">
+      It takes an ideally complete <span style="color:green;">list of (sample) request URIs</span>, or <span style="color:green;">an existing WADL file as input</span>,
+      <ul>
+        <li><b>analyzes the structure</b>,</li>
+        <li>does some <b>type estimations</b>,</li>
+        <li>and afterwards creates an <b>XML (WADL) representation</b> of the request.</li>
+      </ul>
+      The resulting <span style="color:red;">output can be a WADL file</span>, and/or <span style="color:red;">source code in various programming languages</span>.
+    </div>
+    <h2 style="margin-top:3.0em;margin-bottom:1.5em;"><a name="map">How does a REST request map to a WADL representation?</a></h2>
+    <p>
+      To answer this question, let us have a closer look at the example above, and see how this request maps to WADL. As you can see from the corresponding colors, the <b>structure of the WADL document is closely related to the structure of the URI</b> (mouseover the colored items to see the <span style="background-color:yellow;">relations</span>):
+    </p>
+    <p>
+      <b>A sample request:</b>
+    </p>
+      <pre><span id="highlight_get1" onmouseover="highlight('highlight_get');" onmouseout="unhighlight('highlight_get');" style="color:darkblue;">GET</span> <span style="color:darkblue;" id="highlight_http1" onmouseover="highlight('highlight_http');" onmouseout="unhighlight('highlight_http');">http://bookmarks-online.com</span><span style="color:blue;" id="highlight_api1" onmouseover="highlight('highlight_api');" onmouseout="unhighlight('highlight_api');">/api/v1/</span><span style="color:rgb(192,0,255);" id="highlight_book1" onmouseover="highlight('highlight_book');" onmouseout="unhighlight('highlight_book');">bookmarks</span><span style="color:red;" id="highlight_param11" onmouseover="highlight('highlight_param1');" onmouseout="unhighlight('highlight_param1');">?userId</span>=<span style="color:darkgreen;">tom</span>&amp;<span id="highlight_param21" onmouseover="highlight('highlight_param2');" onmouseout="unhighlight('highlight_param2');" style="color:red;">tags</span>=<span style="color:darkgreen;">rest</span>&amp;<span id="highlight_param31" onmouseover="highlight('highlight_param3');" onmouseout="unhighlight('highlight_param3');" style="color:red;">limit</span>=<span style="color:darkgreen;">10</span></pre>
+    <p>
+      <b>And its corresponding WADL representation:</b>
+    </p>
+<pre><span style="color:gray;">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;application
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xsi:schemaLocation="http://research.sun.com/wadl/2006/10 wadl.xsd"
+    xmlns="http://research.sun.com/wadl/2006/10"
+&gt;
+  &lt;resources base="<span id="highlight_http2" onmouseover="highlight('highlight_http');" onmouseout="unhighlight('highlight_http');" style="color:darkblue;">http://bookmarks-online.com/</span>"&gt;
+    &lt;resource path="<span style="color:blue;" id="highlight_api2" onmouseover="highlight('highlight_api');" onmouseout="unhighlight('highlight_api');">api/v1/</span><span style="color:rgb(192,0,255);" id="highlight_book2" onmouseover="highlight('highlight_book');" onmouseout="unhighlight('highlight_book');">bookmarks</span>"&gt;
+      &lt;method name="<span style="color:darkblue;" onmouseover="highlight('highlight_get');" onmouseout="unhighlight('highlight_get');" id="highlight_get2" >GET</span>"&gt;
+        &lt;request&gt;
+          &lt;param name="<span style="color:red;" id="highlight_param12" onmouseover="highlight('highlight_param1');" onmouseout="unhighlight('highlight_param1');">userId</span>" type="xsd:string" style="query" /&gt;
+          &lt;param name="<span id="highlight_param22" onmouseover="highlight('highlight_param2');" onmouseout="unhighlight('highlight_param2');" style="color:red;">tags</span>" type="xsd:string" style="query" /&gt;
+          &lt;param name="<span id="highlight_param32" onmouseover="highlight('highlight_param3');" onmouseout="unhighlight('highlight_param3');" style="color:red;">limit</span>" type="xsd:integer" style="query" /&gt;
+        &lt;/request&gt;
+      &lt;/method&gt;
+  &lt;/resources&gt;
+&lt;/application&gt;</span></pre>
+    <p>
+      If you examine the WADL document in more detail, you can see that the only part that is not directly mappable to the URI is the information regarding the parameter types. In the request the types are represented by a concrete value (e.g. the integer value <span style="font-family:monospace;">10</span>), whereas in the WADL the type is specified in an abstract way (e.g. <span style="font-family:monospace;">xsd:integer</span>). What REST Describe &amp; Compile does to close this gap is to <b>estimate the types based on a heuristic approach</b> that takes into consideration both the parameter name and value.
+    </p>
+    <h2 style="margin-top:3.0em;margin-bottom:1.5em;"><a name="tutorial">A quick tutorial on how to use REST Describe &amp; Compile</a></h2>
+    <p>
+      In the following tutorial I assume that for the REST API that we want to use there is no WADL file available, it thus needs to be generated during the process. Let us give Yahoo's <a href="http://developer.yahoo.com/search/siteexplorer/V1/inlinkData.html">Inbound Links API</a> a try. This API responds to the question who links to a certain URL.
+    </p>
+    <ol>
+      <li>
+        <p>
+          First, we navigate to the API's <a href="http://developer.yahoo.com/search/siteexplorer/V1/inlinkData.html">textual documentation</a> where a clickable sample request can be found (click it to check the API directly in your browser: <a href="http://search.yahooapis.com/SiteExplorerService/V1/inlinkData?appid=YahooDemo&amp;query=http://search.yahoo.com&amp;results=2">http://search.yahooapis.com/SiteExplorerService...</a>).<br />
+        </p>
+          <div style="width:20em;">
+          <a href="./resources/shot2.png">
+            <img src="./resources/shot2.png" alt="Yahoo! Inbound Links API Documentation" style="width:20em;border:none;padding:0.0em 0.5em;" />
+          </a>
+          <div class="img_caption">(Yahoo Inbound Links API documentation)</div>
+          </div>
+        <p>
+ Based on the description and expanding the existing sample request, we create the following more expressive request URI:
+        </p>
+        <p>
+          <span style="font-family:monospace;"><span style="color:darkblue;">http://search.yahooapis.com/SiteExplorerService/V1/inlinkData</span>?<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">appid</span>=<span style="color:maroon;">YahooDemo</span>&amp;<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">query</span>=<span style="color:maroon;">http://search.yahooapis.com</span>&amp;<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">results</span>=<span style="color:maroon;">100</span>&amp;<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">start</span>=<span style="color:maroon;">1</span>&amp;<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">entire_site</span>=<span style="color:maroon;">1</span>&amp;<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">omit_inlinks</span>=<span style="color:maroon;">domain</span>&amp;<br />
+          &nbsp;&nbsp;<span style="color:darkgreen;">output</span>=<span style="color:maroon;">xml</span></span><br />
+        </p>
+        <p>
+          Then we copy this request URI and paste it into the textbox <b>Request Sample</b> in the application REST Describe &amp; Compile and hit the "Analyze" button. This results in a WADL tree being generated:
+        </p>
+          <div style="width:20em;">
+          <a href="./resources/shot1.png">
+            <img src="./resources/shot1.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.0em 0.5em;" />
+          </a>
+          <div class="img_caption">(WADL tree after request analysis)</div>
+          </div>
+      </li>
+      <li>
+        <p>
+          Think back what we have learnt before: <b>the only thing in the WADL file that is not directly mappable to the request URI is the types of the parameters</b>. So let us examine what REST Describe &amp; Compile has found out:
+        </p>
+        <table>
+          <tr>
+            <td>
+              <div style="width:9em;">
+              <a href="./resources/shot4.png">
+                <img src="./resources/shot4.png" alt="REST Describe &amp; Compile analysis results" style="width:9em;border:none;padding:0.0em 0.5em;" />                
+              </a>
+              <div class="img_caption">(Type estimation results)</div>
+              </div>
+              </td>
+              <td>
+                <ul>
+                  <li>
+                    <span style="color:darkgreen;">appid</span> xsd:string (supposed) &raquo; <b>Estimation:</b> true. <b><b>Missing</b>:</b> parameter is required.
+                  </li>
+                  <li>
+                    <span style="color:darkgreen;">query</span> xsd:anyURI (sure) &raquo; <b>Estimation:</b> false. This is a string. <b><b>Missing</b>:</b> parameter is required.
+                  </li>
+                  <li>
+                    <span style="color:darkgreen;">results</span> xsd:integer (sure) &raquo; <b>Estimation</b>: true. <b>Missing</b>: default is 50.
+                  </li>
+                  <li>
+                    <span style="color:darkgreen;">start</span> xsd:integer (supposed) &raquo; <b>Estimation</b>: true. <b>Missing</b>: default is 1.
+                  </li>
+                  <li>
+                    <span style="color:darkgreen;">entire_site</span> xsd:string (supposed) &raquo; <b>Estimation</b>: true/false. Parameter is 1 or no value.
+                  </li>
+                  <li>
+                    <span style="color:darkgreen;">omit_inlinks</span> xsd:string (supposed) &raquo; <b>Estimation</b>: false. This is one out of {none | domain | subdomain}. <b>Missing</b>: default is none.
+                  </li>
+                  <li>
+                    <span style="color:darkgreen;">output</span> xsd:string (supposed) &raquo; <b>Estimation</b>: false. This is one out of {xml | json | php}. <b>Missing</b>: default is xml.
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <p>
+            So all in all, the estimation rate is far from being perfect. The good news is: this does not matter much <span style="font-family:monospace;font-weight:bold;">:-)</span>
+          </p>
+          <p>
+            Domain-specific <b>custom types</b> like the <span style="color:darkgreen;">omit_links</span> one cannot be detected from a client-side-only analysis as we would have to read the remote schema (if available at all). This is not allowed because of the <a href="http://www.mozilla.org/projects/security/components/same-origin.html">Same Origin Policy</a>. However, we can safely treat these parameters as strings instead. The <span style="color:darkgreen;">query</span> parameter was mis-estimated to be xsd:anyURI. Well, it has a value of <span style="font-family:monospace;">http://search.yahooapis.com</span>, so no big surprise. The API documentation states that this should be string, but this API is about inbound links, so the target must be a URI, right? So no problem treating it like one.
+          </p>
+          <p>
+            The two <span style="color:darkgreen;">results</span> and <span style="color:darkgreen;">start</span> parameters were correctly identified as integers, however, the <b>type estimation quality</b> for the latter parameter just being <b>"supposed", and not "sure"</b>. Why is this so? The response is the next parameter <span style="color:darkgreen;">entire_site</span>. This parameter actually is a boolean, however, Yahoo uses <span style="font-family:monospace;">1</span> instead of <span style="font-family:monospace;">true</span> as a value. REST Describe &amp; Compile has this two-level type analysis feature mentioned above that in case of doubts also analyzes the parameter name. In none of the two cases the parameter name starts with "is" or "has", or ends with "ed", which would be treated as boolean indicators. So the fallback is integer. However with just a "supposed" estimation quality rating. The two last parameters are custom types again, so nothing new to say.
+          </p>
+          <p>
+            If you want you can correct these mis-estimations by <b>defining your own custom types</b>. Therefore select "Define Custom Type..." from the parameter's type listbox, then click the "Add" button, enter a type name and the allowed values, finally close the dialog and your custom type will be assigned to the parameter. Once defined, custom types can be used for other parameters as well, they are saved globally for all the parameters in all resources.
+          </p>
+            <div style="width:20em;">
+            <a href="./resources/shot3.png">
+              <img src="./resources/shot3.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.5em;" />
+            </a>
+            <div class="img_caption">(Custom types definition)</div>
+            </div>
+        </li>
+        <li>
+          <p>
+            According to the <a href="http://developer.yahoo.com/search/errors.html">documentation</a>, the API throws some standard 400, 403, and 503 errors. REST Describe &amp; Compile offers a way to <b>automatically detect the faults that an API throws</b>, and in addition to that, also a way to <b>auto-detect the XML schema, and XML namespaces</b>. WADL calls XML schemas "grammars".<br />
+          </p>
+            <div style="width:21em;">
+            <a href="./resources/shot5.png">
+            <img src="./resources/shot5.png" alt="'Auto-Discover Namespaces and Grammars' button" style="border:none;padding:0.0em 0.5em;" /></a>
+            <div class="img_caption">(Auto-discover XML namespaces, XML schemas [or grammars], and faults)</div>
+            </div>
+          <p>
+            This auto-discovery feature is based on an interesting idea, namely the <a href="http://en.wikipedia.org/wiki/Eat_one's_own_dog_food">eat one's own dog food</a> principle. When you hit this button (in the application, not here...), a real API call is been made in the background. What you do not see is that this API request is called by a <b> completely interactively generated class</b>, based on the currently existing WADL file. Remember the problems with the Same Origin Policy mentioned above? In this case the call works because the generated code is passed by REST Describe &amp; Compile to a waiting proxy on the REST Describe &amp; Compile server. This proxy analyzes the API response and gives a nice XML response back to the waiting REST Describe &amp; Compile Ajax request. This XML file contains  the XML namespaces, XML schema, and also the provoked errors that could be detected. See the screenshot below for an example:
+           </p>
+            <div style="width:20em;">
+            <a href="./resources/shot6.png">
+              <img src="./resources/shot6.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.0em 0.5em;" />
+            </a>
+            <div class="img_caption">(Dialog with the auto-discovered grammars and namespaces)</div>
+            </div>
+        </li>
+        <li>
+          <p>
+            As an API provider you might be especially interested in the generated WADL file. REST Describe &amp; Compile allows you to <b>preview</b> or <b>download a WADL</b> at any time. Therefore click the "Preview WADL", or the "Save WADL" button. If you want, REST Describe &amp; Compile can <b>convert your WADL into JSON format</b>. This can be done by clicking the "Convert WADL to JSON" button in the "Save WADL" dialog. In addition to that, you can also <b>edit your WADL file in fullscreen mode</b> (via the "Fullscreen Mode" button). See the screenshots below for details:
+          </p>
+            <div>
+            <a href="./resources/shot7.png">
+              <img src="./resources/shot7.png" alt="REST Describe &amp; Compile Screenshot" style="width:15em;border:none;padding:0.0 0.5em;" /></a>
+            <a href="./resources/shot8.png">
+              <img src="./resources/shot8.png" alt="REST Describe &amp; Compile Screenshot" style="width:15em;border:none;padding:0.0 0.5em;" /></a>
+            <a href="./resources/shot9.png">
+              <img src="./resources/shot9.png" alt="REST Describe &amp; Compile Screenshot" style="width:15em;border:none;padding:0.0 0.5em;" /></a>
+            <div class="img_caption">(WADL Save, Preview WADL, and Fullscreen View dialogs)</div>  
+            </div>
+        </li>
+        <li>
+          <p>Finally we come to the probably most interesting part: <b>code generation</b>. When we hit the "Generate Code" button, the application switches over to the REST Compile view:
+          </p>
+            <div style="width:20em;">
+            <a href="./resources/shot10.png">
+              <img src="./resources/shot10.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.5em;" /></a>
+            <div class="img_caption">(REST Compile view)</div>
+            </div>
+          <p> 
+            Now we can simply click the language button of our choice in order to <b>retrieve code in our preferred programming language</b>. The names of the generated classes are determined either by the API request endpoint, or by a parameter that holds the operation name. APIs that use an operation parameter typically have just one central endpoint. If we have such an API, we can select the naming parameter in the parameter listbox on the right.
+          </p>
+          <p>
+            The generated code can be directly used once it has been saved to the local file system. In the example of the Yahoo Inbound Links API, the following script would work together with the auto-generated PHP 5 code:
+          </p>
+            <code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;</span><span style="color: #007700">require_once(</span><span style="color: #DD0000">'InlinkApi.php'</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$inlinkRequest&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">InlinkDataRequest</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'MySecretYahooToken'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'http://search.yahooapis.com'</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$inlinkRequest</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">submit</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$xml&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SimpleXMLElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$xml</span><span style="color: #007700">[</span><span style="color: #DD0000">'totalResultsAvailable'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">'&nbsp;sites&nbsp;link&nbsp;to&nbsp;here.&lt;/p&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$xml</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Result&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Title&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">':&nbsp;&lt;a&nbsp;href='&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ClickUrl&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Url&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'&lt;/a&gt;&lt;/p&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span></span></code>
+          <p>
+            Some APIs use <a href="http://en.wikipedia.org/wiki/Basic_authentication_scheme">HTTP Basic Authentication</a>. REST Describe &amp; Compile supports this authentication scheme on code level. In order to use <b>HTTP Basic Authentication</b> with an API, simply enter your credentials in the <span style="font-family:monospace;">RestRequest</span> superclass. For example in PHP 5 this looks like this:
+          </p>
+          <code><span style="color: #007700">[...]</span><br /><span style="color: #000000"><span style="color: #FF8000">//&nbsp;class&nbsp;auto-generated&nbsp;by&nbsp;REST&nbsp;Compile&nbsp;<br /></span><span style="color: #007700">abstract&nbsp;class&nbsp;</span><span style="color: #0000BB">RestRequest&nbsp;</span><span style="color: #007700">{&nbsp;<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;provide&nbsp;user&nbsp;and&nbsp;password&nbsp;for&nbsp;HTTP&nbsp;AUTH&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #007700">private&nbsp;</span><span style="color: #0000BB">$_user&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'your_username'</span><span style="color: #007700">;<br />&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$_password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'your_password'</span><span style="color: #007700">;</span></span><br /><span style="color: #007700">&nbsp;&nbsp;[...]</span></code>
+          <hr style="height:1px; color:gray;" />
+        </li>        
+        <li>
+          <p>
+            <b>In the case where there already exists a WADL file</b>, steps 1 and 2 would be replaced by the process of <b>uploading a WADL</b>. This can be done from within the main menu, simply navigate to "WADL &raquo; Upload WADL", and a dialog pops up where you can paste the WADL file in. Everything else will be the same as in the above tutorial from step 3 on:
+          </p>
+          <div style="width:20em;">
+          <a href="./resources/shot11.png">
+            <img src="./resources/shot11.png" alt="REST Describe &amp; Compile Screenshot" style="width:20em;border:none;padding:0.0em 0.5em;" /></a>
+          <div class="img_caption">(Upload WADL dialog)</div>
+          </div>
+        </li>
+      </ol>
+      <p style="text-align:right;">
+        Last modified:
+      	<script type="text/javascript">
+							<!--
+							var lastMod = new Date(document.lastModified);
+							document.write(lastMod.toDateString());
+							//-->
+				</script>
+        <a href="http://validator.w3.org/check?uri=referer">
+        <img src="./resources/valid-xhtml10.png"
+        alt="Valid XHTML 1.0 Strict" style="padding:0.5em;vertical-align:middle;" height="31" width="88" /></a>
+     </p>
+  </body>
+</html>
